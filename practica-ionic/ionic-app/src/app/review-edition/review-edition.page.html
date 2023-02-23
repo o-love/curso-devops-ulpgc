@@ -6,7 +6,9 @@
 
 <ion-content>
     <div *ngIf="!!review">
-        {{review.description}}
+        <ion-label>Descripcion</ion-label>
+        <ion-textarea name="description" [autoGrow]="true" [(ngModel)]="review.description"></ion-textarea>
+        <ion-button (click)="save()" color="primary">Save</ion-button>
     </div>
 
 </ion-content>

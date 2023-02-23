@@ -18,4 +18,10 @@ export class ReviewListService {
     params = params.append('sort', 'id');
     return this.httpClient.get<Review[]>("http://localhost:8080/reviews", {params});
   }
+
+  save(review: Review) {
+    console.log("Going to send");
+    console.log(review);
+    this.httpClient.put("http://localhost:8080/reviews/" + review.id, review).forEach(resp => console.log(resp));
+  }
 }
