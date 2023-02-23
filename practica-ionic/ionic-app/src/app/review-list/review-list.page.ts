@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReviewListPage implements OnInit {
 
+    reviews: any = ['Primera', 'Segunda', 'Tercera'];
+
   constructor() { }
 
   ngOnInit() {
