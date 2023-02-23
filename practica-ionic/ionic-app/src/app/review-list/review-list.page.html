@@ -1,13 +1,11 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>review-list</ion-title>
+    <ion-title>Lista de reseñas</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-{{ reviews }}
-
-<div *ngFor="let review of reviews">
-    {{review}}
+<div *ngFor="let review of reviews" class="review" (click)="save(review)">
+    {{review.description}}
 </div>
 </ion-content>

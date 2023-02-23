@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationExtras } from '@angular/router';
+import { NavController } from '@ionic/angular';
+import { Review } from '../model/Review';
+import { ReviewListService } from '../servicios/review-list.service';
 
 @Component({
   selector: 'app-review-list',
@@ -7,11 +11,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReviewListPage implements OnInit {
 
-    reviews: any = ['Primera', 'Segunda', 'Tercera'];
+    reviews: Review[] = [];
 
-  constructor() { }
+  constructor(private reviewService : ReviewListService,
+            private navController : NavController
+    ) { }
 
   ngOnInit() {
+    this.reviewService.findAll().subscribe(resp => {
+        this.reviews = resp;
+    });
+  }
+
+  save(review: Review) {
+    const NavExtra: NavigationExtras = {
+        queryParams: {
+            review
+        }
+    }
+    this.navController.navigateForward('review-edition', NavExtra);
   }
 
 }
